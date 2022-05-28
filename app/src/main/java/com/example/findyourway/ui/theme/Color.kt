@@ -1,5 +1,6 @@
 package com.example.findyourway.ui.theme
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.graphics.Color
 
 val RoyalBlue = Color(0XFF234E70)

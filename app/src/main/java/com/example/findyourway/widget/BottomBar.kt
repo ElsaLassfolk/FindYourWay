@@ -1,61 +1,59 @@
 package com.example.findyourway.widget
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Help
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.example.findyourway.navigation.BottomNavItem
-import com.example.findyourway.navigation.BottomNavigationGraph
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hierarchy
+import com.example.findyourway.R
+import com.example.findyourway.navigation.Screen
+
 
 @Composable
-fun BottomBar(navController: NavController){
-
-    val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.Help,
-        BottomNavItem.Exit
-    )
-
+fun BottomBar(
+    modifier: Modifier,
+    currentDestination: NavDestination?,
+    onNavigationSelected: (Screen) -> Unit
+) {
     BottomNavigation(
-        elevation = 5.dp
-    ){
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        items.map {
-            BottomNavigationItem(
-                icon= {
-                },
-                label= {
-                    Text(
-                        text = it.title
-                    )
-                },
-                selected = currentRoute == it.route,
-                selectedContentColor= Color.White,
-                unselectedContentColor= Color.White.copy(alpha = 0.4f),
-                onClick = {
-                    navController.navigate(it.route)
-                }
-            )
-        }
+        backgroundColor = Color.Black,
+        contentColor = Color.White
 
-    }
-}
-
-@Composable
-fun BottomBarView() {
-    val navController = rememberNavController()
-    Scaffold(bottomBar = {
-        BottomBar(navController)
-    }
     ) {
-        BottomNavigationGraph(navController = navController)
+        BottomNavigationItem(
+            icon = { Icon(imageVector = Icons.Default.Home, "Home icon", modifier = Modifier.size(width=30.dp, height=30.dp)) },
+            label = { Text(stringResource(id = R.string.Home)) },
+            selected = currentDestination?.hierarchy?.any { it.route == com.example.findyourway.navigation.Screen.Main.route} == true,
+            onClick = { onNavigationSelected(com.example.findyourway.navigation.Screen.Main)},
+            selectedContentColor = Color.White,
+            unselectedContentColor = Color.White
+        )
+
+        BottomNavigationItem(
+            icon = { Icon(imageVector = Icons.Default.Help, "Help icon", modifier = Modifier.size(width=30.dp, height=30.dp)) },
+            label = { Text(stringResource(id = R.string.Help)) },
+            selected = currentDestination?.hierarchy?.any { it.route == com.example.findyourway.navigation.Screen.Help.route } == true,
+            onClick = { onNavigationSelected(com.example.findyourway.navigation.Screen.Help) },
+            selectedContentColor = Color.White,
+            unselectedContentColor = Color.White
+        )
+
+        BottomNavigationItem(
+            icon = { Icon(imageVector = Icons.Default.ExitToApp, "Exit icon", modifier = Modifier.size(width=30.dp, height=30.dp)) },
+            label = { Text(stringResource(id = R.string.Exit)) },
+            selected = currentDestination?.hierarchy?.any { it.route == com.example.findyourway.navigation.Screen.Main.route } == true,
+            onClick = { onNavigationSelected(com.example.findyourway.navigation.Screen.Main) },
+            selectedContentColor = Color.White,
+            unselectedContentColor = Color.White
+        )
     }
 }
+

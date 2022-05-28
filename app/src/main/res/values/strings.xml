@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FindYourWay</string>
     <string name="direction">Head northwest on Topeliuksenkatu/Topeliusgatan toward Eino Leinon katu/Eino Leinos gata</string>
+    <string name="Home">Home</string>
+    <string name="Help">Help</string>
+    <string name="Exit">Exit</string>
 </resources>

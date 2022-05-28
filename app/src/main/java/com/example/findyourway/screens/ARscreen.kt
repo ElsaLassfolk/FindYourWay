@@ -5,24 +5,20 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.findyourway.R
-import com.example.findyourway.navigation.Screens
-import com.example.findyourway.widget.BottomBarView
+import com.example.findyourway.navigation.Screen
+import com.example.findyourway.ui.theme.FindYourWayTheme
 
 @Composable
 fun ARscreen(navController: NavController) {
-    BottomBarView()
+    FindYourWayTheme(){
     Surface(Modifier.fillMaxWidth()) {
         Column(
             verticalArrangement = Arrangement.Bottom,
@@ -36,7 +32,7 @@ fun ARscreen(navController: NavController) {
     }
 
     }
-
+}
 
 @Composable
 fun ARscreenImage(){
@@ -51,16 +47,16 @@ fun ARscreenImage(){
         @Composable
         fun ARscreenButton(navController: NavController){
 
-            Button(onClick = { navController.navigate(Screens.MainScreen.name)},
+            Button(onClick = { navController.navigate(Screen.Main.route)},
                 modifier = Modifier
-                    .width(250.dp)
+                    .width(300.dp)
                     .height(80.dp),
-                shape = MaterialTheme.shapes.medium)
+                shape = MaterialTheme.shapes.medium,)
             {
                 Text(
-                    text = "Add to favorite",
                     style=MaterialTheme.typography.button,
-                    textAlign = TextAlign.Justify
+                    fontSize = 25.sp,
+                    text = "Add to favorite"
                 )
                 Icon(
                     imageVector = Icons.Default.Favorite,
