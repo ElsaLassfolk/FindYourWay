@@ -3,16 +3,17 @@ package com.example.findyourway
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.findyourway.navigation.Navigation
+import androidx.navigation.compose.rememberNavController
+import com.example.findyourway.navigation.BottomNavigationGraph
+import com.example.findyourway.navigation.NavigationGraph
 import com.example.findyourway.ui.theme.FindYourWayTheme
+import com.example.findyourway.widget.BottomBarView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +28,18 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun FindYourWay() {
     FindYourWayTheme() {
+        BottomBarView()
         Surface(
             color = MaterialTheme.colors.primary,
-            modifier = Modifier.fillMaxSize()){
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()){
             Column(verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
-                Navigation()
+                NavigationGraph()
+
+
+
             }
         }
     }

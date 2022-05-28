@@ -12,36 +12,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.findyourway.R
 import com.example.findyourway.navigation.Screens
+import com.example.findyourway.widget.BottomBarView
 
 @Composable
-
 fun ARscreen(navController: NavController) {
-    androidx.compose.material.Surface(modifier = Modifier.fillMaxSize())
-    {
+    BottomBarView()
+    Surface(Modifier.fillMaxWidth()) {
         Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        )
-        {
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            ARscreenImage()
+            ARscreenButton(navController = navController)
+
+        }
+
+    }
+
+    }
 
 
-            Image(
-                painter = painterResource(id = R.drawable.ar),
-                contentDescription = "Live View",
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
+@Composable
+fun ARscreenImage(){
+        Image(painter = painterResource(id = R.drawable.ar),
+            contentDescription = "Live View",
+            modifier = Modifier
+                .width(550.dp))
+    }
+
+
+
+        @Composable
+        fun ARscreenButton(navController: NavController){
 
             Button(onClick = { navController.navigate(Screens.MainScreen.name)},
                 modifier = Modifier
-                    .padding(10.dp)
                     .width(250.dp)
-                    .height(150.dp),
+                    .height(80.dp),
                 shape = MaterialTheme.shapes.medium)
             {
                 Text(
@@ -59,6 +72,3 @@ fun ARscreen(navController: NavController) {
             }
 
         }
-
-    }
-}

@@ -6,4 +6,5 @@ enum class Screens {
     MapScreen,
     RouteScreen,
     ARscreen,
+    HelpScreen
 }

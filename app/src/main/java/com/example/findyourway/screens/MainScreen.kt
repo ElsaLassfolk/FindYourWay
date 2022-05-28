@@ -1,12 +1,19 @@
 package com.example.findyourway.screens
 
 import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Help
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -17,7 +24,6 @@ import com.example.findyourway.R
 
 @Composable
 fun MainScreen(navController: NavController) {
-
     Scaffold(topBar= {
         SearchBar(
             title = "Search destination",
@@ -29,6 +35,7 @@ fun MainScreen(navController: NavController) {
             Column(verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                CompanyLogo()
                 Tips()
                 TalkButton(navController)
             }
@@ -40,14 +47,30 @@ fun MainScreen(navController: NavController) {
 }
 
 @Composable
+fun CompanyLogo() {
+        Column(
+            modifier = Modifier.padding(1.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_size),
+                contentDescription = "company logo",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(200.dp)
+            )
+
+        }
+    }
+
+@Composable
 fun Tips(){
     Column(
         Modifier
-            .padding(20.dp)
+            .padding(30.dp)
             .fillMaxWidth()
-            .height(250.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally){
+            .fillMaxHeight(0.6f)
+        ){
         Text(text="Tips: You can type and search the destination address with top bar, or press the lower button to talk and tell your destination address",
             style=MaterialTheme.typography.caption,
             color=MaterialTheme.colors.onSecondary,
@@ -57,19 +80,12 @@ fun Tips(){
 
 @Composable
 fun TalkButton(navController: NavController) {
-    Column(
-        Modifier
-            //  .padding(20.dp)
-            .fillMaxWidth()
-            .height(250.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally){
-    }
+
     Button(onClick = {
         navController.navigate(Screens.MapScreen.name) },
         modifier = Modifier
             .width(250.dp)
-            .height(150.dp),
+            .height(80.dp),
         shape = MaterialTheme.shapes.medium){
         Text(text = "Press and Talk",
             style=MaterialTheme.typography.button)
