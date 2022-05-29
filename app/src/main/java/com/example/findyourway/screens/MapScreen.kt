@@ -73,7 +73,6 @@ fun MapScreen(navController: NavController) {
                 ) {
 
                     Text(
-                        style = MaterialTheme.typography.body1,
                         text = "1km from Eye and Ear Hospital"
 
                     )
@@ -105,13 +104,10 @@ fun MapScreen(navController: NavController) {
                 .padding(10.dp)
                 .width(300.dp)
                 .height(80.dp),
-            shape = MaterialTheme.shapes.medium
         )
         {
             Text(
-                style = MaterialTheme.typography.button,
                 text = "Press to route ",
-                fontSize = 25.sp,
 
             )
             Image(
