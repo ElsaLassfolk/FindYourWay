@@ -52,7 +52,7 @@ fun RouteScreen(navController: NavController) {
                             .size(40.dp)
                             .padding(4.dp)
                     )
-                    Text(stringResource(id = R.string.direction), fontSize = 25.sp, style=MaterialTheme.typography.body1)
+                    Text(stringResource(id = R.string.direction), style=MaterialTheme.typography.body1)
 
                 }
             }
@@ -78,7 +78,6 @@ fun RouteButton(navController: NavController) {
             .padding(10.dp)
             .width(300.dp)
             .height(80.dp),
-        shape = MaterialTheme.shapes.medium
     )
     {
         Text(
