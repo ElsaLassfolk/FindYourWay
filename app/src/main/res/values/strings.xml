@@ -1,9 +1,20 @@
 <resources>
     <string name="app_name">FindYourWay</string>
     <string name="direction">Head northwest on Topeliuksenkatu/Topeliusgatan toward Eino Leinon katu/Eino Leinos gata</string>
-    <string name="instruction">First, click SEARCH bar on top of the screen to enter destination address. To speak to the app, click PRESS AND TALK on the lower part of the screen. If address is right, it will take you to the map. Press START TO ROUTE button on the bottom of map screen to see direction. For live view, press SEE LIVE VIEW button on the bottom of route screen. Press BACK button anytime to go back to previous screen on the top left hand corner.  When finish navigating, click ADD TO FAVORITE on the bottom of screen. To exit the app, click EXIT on the navigation bar. For Help, use command EXIT with voice assistance or press EXIT button on the lower navigation bar.</string>
+    <string name="instruction">First, click SEARCH bar on top of the screen to enter destination address. To speak to the app, click PRESS AND TALK on the bottom. If address is right, it will take you to map screen. Press START TO ROUTE button on the bottom to see direction. For live view, press SEE LIVE VIEW button on the bottom. Press BACK button anytime to go back to previous screen on the top left corner.  When finish navigating, click ADD TO FAVORITE. To exit the app, click EXIT on the navigation bar. For Help, use command EXIT with voice assistance or press EXIT button on the lower navigation bar.</string>
     <string name="Home">Home</string>
     <string name="Help">Help</string>
     <string name="Exit">Exit</string>
     <string name="Back">Back</string>
+    <string name="Add_to_favorite">Add To Favorite</string>
+    <string name="Press_and_talk">Press and Talk</string>
+    <string name="Press_to_route">Press to route</string>
+    <string name="See_Live_View">See Live View</string>
+    <string name="Enter_address">Enter your destination address</string>
+    <string name="favorite_icon">favorite icon</string>
+    <string name="microphone_icon">microphone icon</string>
+    <string name="live_view">Live View</string>
+    <string name="Route_icon">Route Icon</string>
+    <string name="Arrow_icon">Arrow Icon</string>
+
 </resources>

@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.findyourway.widget.SearchBar
@@ -57,7 +58,7 @@ fun CompanyLogo() {
             painter = painterResource(id = R.drawable.logo_size),
             contentDescription = "company logo",
             contentScale = ContentScale.Fit,
-            modifier = Modifier.size(220.dp)
+            modifier = Modifier.size(200.dp)
         )
 
     }
@@ -67,7 +68,7 @@ fun CompanyLogo() {
 fun Tips(){
     Column(modifier = Modifier
         .wrapContentSize()
-        .padding(start=60.dp, bottom=60.dp, end=40.dp),
+        .padding(start = 60.dp, bottom = 20.dp, end = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
@@ -85,15 +86,14 @@ fun TalkButton(navController: NavController) {
         navController.navigate(Screen.Map.route) },
         modifier = Modifier
             .width(300.dp)
-            .height(80.dp),
-        shape = MaterialTheme.shapes.medium
+            .height(80.dp)
 
     ){
-        Text(text = "Press and Talk",
+        Text(text = stringResource(id = R.string.Press_and_talk),
             style=MaterialTheme.typography.button)
 
         Image(painter = painterResource(id=R.drawable.microphone),
-            contentDescription = "microphone icon",
+            contentDescription = stringResource(id = R.string.microphone_icon),
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .size(40.dp)

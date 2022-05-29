@@ -28,8 +28,8 @@ fun HelpScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.white))
-            .wrapContentSize(Alignment.CenterStart)
-            .padding(start=10.dp, end=10.dp)
+            .wrapContentSize(Alignment.TopStart)
+            .padding(10.dp)
     ) {
         Text(
             text=stringResource(id = R.string.instruction),

@@ -39,15 +39,15 @@ fun RouteScreen(navController: NavController) {
 fun DirectionTextView() {
     Surface(modifier = Modifier
         .fillMaxWidth()
-        .height(130.dp)
-        .padding(start = 8.dp, end=8.dp)){
+        .height(120.dp)
+        .padding(start = 8.dp, end = 8.dp)){
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = CenterVertically
         ) {
             Image(
                 painter = painterResource(id = R.drawable.arrow),
-                contentDescription = "arrow icon",
+                contentDescription = stringResource(id = R.string.Arrow_icon),
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(40.dp)
@@ -82,13 +82,13 @@ fun RouteButton(navController: NavController) {
     )
     {
         Text(
-            text = "See Live View",
+            text = stringResource(id = R.string.See_Live_View),
             fontSize = 25.sp,
             style = MaterialTheme.typography.button
         )
         Image(
-            painter = painterResource(id = R.drawable.route),
-            contentDescription = "favorite icon",
+            painter = painterResource(id = R.drawable.liveview),
+            contentDescription = stringResource(id = R.string.live_view),
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp)
