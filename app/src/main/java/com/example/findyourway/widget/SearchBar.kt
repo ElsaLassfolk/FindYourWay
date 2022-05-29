@@ -28,8 +28,7 @@ fun SearchBar(
     TopAppBar(title = {
         Text(text = title,
             color=MaterialTheme.colors.onSecondary,
-            style=TextStyle(fontWeight = FontWeight.Bold,
-                fontSize = 25.sp))
+            style=MaterialTheme.typography.body1)
     },
         actions= {
             if (isMainScreen) {

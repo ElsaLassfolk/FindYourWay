@@ -33,15 +33,6 @@ fun BottomBar(
 
     ) {
         BottomNavigationItem(
-            icon = { Icon(imageVector = Icons.Default.ArrowBack, "Back icon", modifier = Modifier.size(width=30.dp, height=30.dp)) },
-            label = { Text(stringResource(id = R.string.Back)) },
-            selected = currentDestination?.hierarchy?.any { it.route == com.example.findyourway.navigation.Screen.Main.route} == true,
-            onClick = { activity?.onBackPressed()},
-            selectedContentColor = Color.White,
-            unselectedContentColor = Color.White
-        )
-
-        BottomNavigationItem(
             icon = { Icon(imageVector = Icons.Default.Help, "Help icon", modifier = Modifier.size(width=30.dp, height=30.dp)) },
             label = { Text(stringResource(id = R.string.Help)) },
             selected = currentDestination?.hierarchy?.any { it.route == com.example.findyourway.navigation.Screen.Help.route } == true,

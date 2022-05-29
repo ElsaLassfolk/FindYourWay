@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.findyourway.R
 import com.example.findyourway.navigation.Screen
@@ -41,14 +40,14 @@ fun MapScreen(navController: NavController) {
     fun MapScreenTextView() {
         Surface(
             modifier = Modifier
-                .height(100.dp)
+                .height(80.dp)
                 .fillMaxWidth()
                 .padding(start=12.dp, end=12.dp)
         ) {
             Row(
                 modifier = Modifier
                     .background(MaterialTheme.colors.surface)
-                    .padding(8.dp)
+                    .padding(4.dp)
                     .wrapContentHeight()
             ) {
 
