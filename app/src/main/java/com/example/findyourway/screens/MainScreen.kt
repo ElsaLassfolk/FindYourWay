@@ -14,51 +14,54 @@ import androidx.navigation.NavController
 import com.example.findyourway.widget.SearchBar
 import com.example.findyourway.R
 import com.example.findyourway.navigation.Screen
-import com.example.findyourway.ui.theme.FindYourWayTheme
+
+/**
+ * UI screen for Main Screen
+ */
 
 @Composable
 fun MainScreen(navController: NavController) {
-            Scaffold(topBar = {
-                SearchBar(
-                    title = "Search destination",
-                    elevation = 5.dp
-                )
+    Scaffold(topBar = {
+        SearchBar(
+            title = "Search destination",
+            elevation = 5.dp
+        )
 
-                Log.d("TAG", "MainSearch")
-            }) {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        CompanyLogo()
-                        Tips()
-                        TalkButton(navController)
-                    }
-
-                }
-
+        Log.d("TAG", "MainSearch")
+    }) {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CompanyLogo()
+                Tips()
+                TalkButton(navController)
             }
 
         }
 
+    }
+
+}
+
 
 @Composable
 fun CompanyLogo() {
-        Column(
-            modifier = Modifier.padding(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.logo_size),
-                contentDescription = "company logo",
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.size(220.dp)
-            )
+    Column(
+        modifier = Modifier.padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.logo_size),
+            contentDescription = "company logo",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.size(220.dp)
+        )
 
-        }
     }
+}
 
 @Composable
 fun Tips(){
@@ -67,7 +70,7 @@ fun Tips(){
         .padding(start=60.dp, bottom=60.dp, end=40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
-        ){
+    ){
         Text(text="Tips: You can type and search the destination address with top bar, or press the lower button to talk and tell your destination address",
             style=MaterialTheme.typography.body1,
             color=MaterialTheme.colors.onSecondary,
@@ -78,23 +81,23 @@ fun Tips(){
 @Composable
 fun TalkButton(navController: NavController) {
 
-        Button(onClick = {
-            navController.navigate(Screen.Map.route) },
+    Button(onClick = {
+        navController.navigate(Screen.Map.route) },
+        modifier = Modifier
+            .width(300.dp)
+            .height(80.dp),
+        shape = MaterialTheme.shapes.medium
+
+    ){
+        Text(text = "Press and Talk",
+            style=MaterialTheme.typography.button)
+
+        Image(painter = painterResource(id=R.drawable.microphone),
+            contentDescription = "microphone icon",
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .width(300.dp)
-                .height(80.dp),
-            shape = MaterialTheme.shapes.medium
-
-        ){
-            Text(text = "Press and Talk",
-                style=MaterialTheme.typography.button)
-
-            Image(painter = painterResource(id=R.drawable.microphone),
-                contentDescription = "microphone icon",
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .size(40.dp)
-                    .padding(4.dp))
-        }
+                .size(40.dp)
+                .padding(4.dp))
     }
+}
 

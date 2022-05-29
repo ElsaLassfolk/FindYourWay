@@ -16,6 +16,10 @@ import com.example.findyourway.R
 import com.example.findyourway.navigation.Screen
 import com.example.findyourway.ui.theme.FindYourWayTheme
 
+/**
+ * UI screen for Map Live View
+ */
+
 @Composable
 fun ARscreen(navController: NavController) {
     Surface(Modifier.fillMaxWidth()) {
@@ -25,46 +29,41 @@ fun ARscreen(navController: NavController) {
         ) {
             ARscreenImage()
             ARscreenButton(navController = navController)
-
         }
-
     }
-
-    }
+}
 
 
 @Composable
 fun ARscreenImage(){
-        Image(painter = painterResource(id = R.drawable.ar),
-            contentDescription = "Live View",
+    Image(painter = painterResource(id = R.drawable.ar),
+        contentDescription = "Live View",
+        modifier = Modifier
+            .width(550.dp))
+}
+
+
+
+@Composable
+fun ARscreenButton(navController: NavController){
+
+    Button(onClick = { navController.navigate(Screen.Main.route)},
+        modifier = Modifier
+            .padding(20.dp)
+            .width(300.dp)
+            .height(80.dp),
+        shape = MaterialTheme.shapes.medium,)
+    {
+        Text(
+            text = "Add to favorite"
+        )
+        Icon(
+            imageVector = Icons.Default.Favorite,
             modifier = Modifier
-                .width(550.dp))
+                .size(40.dp)
+                .padding(4.dp),
+            contentDescription = "favorite icon"
+        )
     }
 
-
-
-        @Composable
-        fun ARscreenButton(navController: NavController){
-
-            Button(onClick = { navController.navigate(Screen.Main.route)},
-                modifier = Modifier
-                    .padding(20.dp)
-                    .width(300.dp)
-                    .height(80.dp),
-                shape = MaterialTheme.shapes.medium,)
-            {
-                Text(
-                    style=MaterialTheme.typography.button,
-                    fontSize = 25.sp,
-                    text = "Add to favorite"
-                )
-                Icon(
-                    imageVector = Icons.Default.Favorite,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .padding(4.dp),
-                    contentDescription = "favorite icon"
-                )
-            }
-
-        }
+}

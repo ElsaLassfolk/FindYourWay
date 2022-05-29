@@ -15,58 +15,60 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.findyourway.R
 import com.example.findyourway.navigation.Screen
-import com.example.findyourway.ui.theme.FindYourWayTheme
+
+/**
+ * UI screen for Route Screen
+ */
 
 @Composable
-
 fun RouteScreen(navController: NavController) {
-        Surface(Modifier.fillMaxHeight(1f)) {
-            Column(
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                DirectionTextView()
-                RouteMap()
-                RouteButton(navController = navController)
+    Surface(Modifier.fillMaxHeight(1f)) {
+        Column(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            DirectionTextView()
+            RouteMap()
+            RouteButton(navController = navController)
 
-            }
+        }
+    }
+}
+
+@Composable
+fun DirectionTextView() {
+    Surface(modifier = Modifier
+        .fillMaxWidth()
+        .height(130.dp)
+        .padding(start = 8.dp, end=8.dp)){
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.arrow),
+                contentDescription = "arrow icon",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .size(40.dp)
+                    .padding(4.dp)
+            )
+            Text(stringResource(id = R.string.direction), style=MaterialTheme.typography.body1)
+
         }
     }
 
-        @Composable
-        fun DirectionTextView() {
-            Surface(modifier = Modifier
-                .fillMaxWidth()
-                .height(130.dp)
-                .padding(start = 8.dp, end=8.dp)){
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = CenterVertically
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.arrow),
-                        contentDescription = "arrow icon",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .size(40.dp)
-                            .padding(4.dp)
-                    )
-                    Text(stringResource(id = R.string.direction), style=MaterialTheme.typography.body1)
+}
 
-                }
-            }
+@Composable
+fun RouteMap() {
+    Image(
+        painter = painterResource(id = R.drawable.routewithcues),
+        contentDescription = "Route icon",
+        modifier = Modifier
+            .fillMaxWidth())
 
-        }
-
-        @Composable
-        fun RouteMap() {
-            Image(
-                painter = painterResource(id = R.drawable.routewithcues),
-                contentDescription = "Route icon",
-                modifier = Modifier
-                    .fillMaxWidth())
-
-        }
+}
 
 
 @Composable

@@ -6,13 +6,17 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Customized Material Theme for color
+ */
+
 private val DarkColorPalette = darkColors(
     primary = Indigo,
     secondary=Color.Black,
     onPrimary = Color.White,
     onBackground =Color.Black,
     onSecondary = Color.Black,
-    onSurface =Color.Black,
+    onSurface =Color.White,
     secondaryVariant = Color.Black
 
 )
@@ -28,11 +32,11 @@ private val LightColorPalette = lightColors(
 
 )
 
-//dark theme set to false
+
 
 @Composable
 fun FindYourWayTheme(
-    darkTheme: Boolean = false,
+    darkTheme: Boolean = false, //dark theme set to false
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {

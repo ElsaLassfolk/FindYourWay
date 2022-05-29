@@ -7,7 +7,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Set of Material typography styles to start with
+/**
+ * Customized Material Theme for typography
+ */
+
 val Typography = Typography(
 
     h1=TextStyle(

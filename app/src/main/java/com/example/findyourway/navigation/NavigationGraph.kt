@@ -6,12 +6,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.findyourway.screens.*
 
+/**
+ * Navigation logic for the app.
+ */
+
 sealed class Screen(
     val route: String
 ) {
-    object Home : Screen("Home")
     object Help : Screen("Help")
-    object Exit : Screen("Exit")
     object Main : Screen("Main")
     object Map : Screen("Map")
     object Route : Screen("Route")

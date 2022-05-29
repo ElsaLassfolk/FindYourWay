@@ -14,107 +14,110 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.findyourway.R
 import com.example.findyourway.navigation.Screen
-import com.example.findyourway.ui.theme.FindYourWayTheme
+
+/**
+ * UI screen for Map Screen
+ */
 
 @Composable
 fun MapScreen(navController: NavController) {
-        Surface(Modifier.fillMaxHeight(1f)) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                MapScreenTextView()
-                Map()
-                RouteScreenButton(navController = navController)
-
-            }
-
-        }
-
-    }
-
-
-
-    @Composable
-    fun MapScreenTextView() {
-        Surface(
-            modifier = Modifier
-                .height(80.dp)
-                .fillMaxWidth()
-                .padding(start=12.dp, end=12.dp)
+    Surface(Modifier.fillMaxHeight(1f)) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier
-                    .background(MaterialTheme.colors.surface)
-                    .padding(4.dp)
-                    .wrapContentHeight()
-            ) {
+            MapScreenTextView()
+            Map()
+            RouteScreenButton(navController = navController)
 
-                Surface(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(60.dp),
-                    shape = CircleShape,
-                    color = Color(0xFFFFC400)
-                ) {
-
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(text = "1 km")
-                    }
-                }
-                Column(
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterVertically)
-                ) {
-
-                    Text(
-                        text = "1km from Eye and Ear Hospital"
-
-                    )
-                }
-
-            }
         }
 
     }
 
-    @Composable
-    fun Map() {
+}
+
+
+
+@Composable
+fun MapScreenTextView() {
+    Surface(
+        modifier = Modifier
+            .height(80.dp)
+            .fillMaxWidth()
+            .padding(start=12.dp, end=12.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .background(MaterialTheme.colors.surface)
+                .padding(4.dp)
+                .wrapContentHeight()
+        ) {
+
+            Surface(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(60.dp),
+                shape = CircleShape,
+                color = Color(0xFFFFC400)
+            ) {
+
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(text = "1 km")
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .align(alignment = Alignment.CenterVertically)
+            ) {
+
+                Text(
+                    text = "1km from Eye and Ear Hospital"
+
+                )
+            }
+
+        }
+    }
+
+}
+
+@Composable
+fun Map() {
+    Image(
+        painter = painterResource(id = R.drawable.map),
+        contentDescription = "Route icon",
+        modifier = Modifier
+            .fillMaxWidth()
+    )
+
+
+}
+
+
+@Composable
+fun RouteScreenButton(navController: NavController) {
+    Button(
+        onClick = { navController.navigate(Screen.Route.route) },
+        modifier = Modifier
+            .padding(20.dp)
+            .width(300.dp)
+            .height(80.dp),
+    )
+    {
+        Text(
+            text = "Press to route ",
+
+            )
         Image(
-            painter = painterResource(id = R.drawable.map),
+            painter = painterResource(id = R.drawable.route),
             contentDescription = "Route icon",
             modifier = Modifier
-                .fillMaxWidth()
+                .size(40.dp)
+                .padding(4.dp)
         )
-
-
     }
 
-
-    @Composable
-    fun RouteScreenButton(navController: NavController) {
-        Button(
-            onClick = { navController.navigate(Screen.Route.route) },
-            modifier = Modifier
-                .padding(20.dp)
-                .width(300.dp)
-                .height(80.dp),
-        )
-        {
-            Text(
-                text = "Press to route ",
-
-            )
-            Image(
-                painter = painterResource(id = R.drawable.route),
-                contentDescription = "Route icon",
-                modifier = Modifier
-                    .size(40.dp)
-                    .padding(4.dp)
-            )
-        }
-
-    }
+}

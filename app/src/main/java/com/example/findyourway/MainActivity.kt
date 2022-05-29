@@ -21,11 +21,14 @@ import com.example.findyourway.navigation.NavigationGraph
 import com.example.findyourway.ui.theme.FindYourWayTheme
 import com.example.findyourway.widget.BottomBar
 
+/** App Main Activity, with content, app bar and navigation bar.
+ *
+ */
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             FindYourWay()
         }
     }
@@ -34,54 +37,53 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FindYourWay() {
-FindYourWayTheme() {
+    FindYourWayTheme() {
 
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+        val navController = rememberNavController()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
 
 
-            Scaffold(
-                topBar = {
-                    TopAppBar(
-                        title = { Text(text = "App - Find Your Way", color=MaterialTheme.colors.onPrimary) },
-                        navigationIcon = if (navController.previousBackStackEntry != null) {
-                            {
-                                IconButton(onClick = { navController.navigateUp() }) {
-                                    Icon(
-                                        painter= painterResource(id = R.drawable.back),
-                                        contentDescription = "Back",
-                                    )
-                                }
-                            }
-                        } else {
-                            null
-                        }
-
-                    )
-                },
-                bottomBar = {
-                    BottomBar(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        currentDestination = currentDestination,
-                        onNavigationSelected = { screen ->
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "App - Find Your Way", color=MaterialTheme.colors.onPrimary) },
+                    navigationIcon = if (navController.previousBackStackEntry != null) {
+                        {
+                            IconButton(onClick = { navController.navigateUp() }) {
+                                Icon(
+                                    painter= painterResource(id = R.drawable.back),
+                                    contentDescription = "Back",
+                                )
                             }
                         }
-                    )
-                },
-            )
-            {
-                    paddingValues ->
-                NavigationGraph(Modifier.padding(paddingValues), navController)
-            }
+                    } else {
+                        null
+                    }
+                )
+            },
+            bottomBar = {
+                BottomBar(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    currentDestination = currentDestination,
+                    onNavigationSelected = { screen ->
+                        navController.navigate(screen.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                )
+            },
+        )
+        {
+                paddingValues ->
+            NavigationGraph(Modifier.padding(paddingValues), navController)
         }
+    }
 }
 
 
