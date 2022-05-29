@@ -18,7 +18,6 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 
 @Composable
 fun MainScreen(navController: NavController) {
-        FindYourWayTheme() {
             Scaffold(topBar = {
                 SearchBar(
                     title = "Search destination",
@@ -42,7 +41,7 @@ fun MainScreen(navController: NavController) {
             }
 
         }
-    }
+
 
 @Composable
 fun CompanyLogo() {

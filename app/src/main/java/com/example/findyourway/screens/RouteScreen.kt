@@ -20,7 +20,6 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 @Composable
 
 fun RouteScreen(navController: NavController) {
-    FindYourWayTheme() {
         Surface(Modifier.fillMaxHeight(1f)) {
             Column(
                 verticalArrangement = Arrangement.Top,
@@ -33,7 +32,7 @@ fun RouteScreen(navController: NavController) {
             }
         }
     }
-}
+
         @Composable
         fun DirectionTextView() {
             Surface(modifier = Modifier
@@ -75,7 +74,7 @@ fun RouteButton(navController: NavController) {
     Button(
         onClick = { navController.navigate(Screen.AR.route) },
         modifier = Modifier
-            .padding(10.dp)
+            .padding(20.dp)
             .width(300.dp)
             .height(80.dp),
     )

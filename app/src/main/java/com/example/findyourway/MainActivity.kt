@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -17,6 +18,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.findyourway.navigation.NavigationGraph
+import com.example.findyourway.ui.theme.FindYourWayTheme
 import com.example.findyourway.widget.BottomBar
 
 class MainActivity : ComponentActivity() {
@@ -32,6 +34,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FindYourWay() {
+FindYourWayTheme() {
 
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -41,8 +44,7 @@ fun FindYourWay() {
             Scaffold(
                 topBar = {
                     TopAppBar(
-                        backgroundColor = Color.White,
-                        title = { Text(text = "App - Find Your Way") },
+                        title = { Text(text = "App - Find Your Way", color=MaterialTheme.colors.onPrimary) },
                         navigationIcon = if (navController.previousBackStackEntry != null) {
                             {
                                 IconButton(onClick = { navController.navigateUp() }) {
@@ -80,6 +82,6 @@ fun FindYourWay() {
                 NavigationGraph(Modifier.padding(paddingValues), navController)
             }
         }
-
+}
 
 

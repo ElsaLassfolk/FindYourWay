@@ -18,7 +18,6 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 
 @Composable
 fun ARscreen(navController: NavController) {
-    FindYourWayTheme(){
     Surface(Modifier.fillMaxWidth()) {
         Column(
             verticalArrangement = Arrangement.Bottom,
@@ -32,7 +31,7 @@ fun ARscreen(navController: NavController) {
     }
 
     }
-}
+
 
 @Composable
 fun ARscreenImage(){
@@ -49,6 +48,7 @@ fun ARscreenImage(){
 
             Button(onClick = { navController.navigate(Screen.Main.route)},
                 modifier = Modifier
+                    .padding(20.dp)
                     .width(300.dp)
                     .height(80.dp),
                 shape = MaterialTheme.shapes.medium,)

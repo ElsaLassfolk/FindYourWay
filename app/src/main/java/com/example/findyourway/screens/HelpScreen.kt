@@ -22,7 +22,6 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 
 @Composable
 fun HelpScreen(navController: NavController) {
-    FindYourWayTheme() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -40,4 +39,3 @@ fun HelpScreen(navController: NavController) {
             )
         }
     }
-}
