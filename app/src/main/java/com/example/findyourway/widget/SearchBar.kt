@@ -9,11 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.findyourway.R
 
 @Composable
 fun SearchBar(
@@ -25,7 +25,11 @@ fun SearchBar(
     onButtonClicked:()-> Unit={}
 
 ){
-    TopAppBar(title = {
+
+    TopAppBar(modifier=Modifier
+        .clickable(onClickLabel= stringResource(id = R.string.Enter_address),onClick={})
+        .semantics(mergeDescendants = true) {},
+        title = {
         Text(text = title,
             color=MaterialTheme.colors.onSecondary,
             style=MaterialTheme.typography.body1)
@@ -35,7 +39,7 @@ fun SearchBar(
                 IconButton(onClick = { /*TODO*/ }) {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Enter your destination address "
+                        contentDescription = null
                     )
                 }
             } else Box {}

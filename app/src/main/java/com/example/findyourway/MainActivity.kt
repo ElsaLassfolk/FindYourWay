@@ -3,6 +3,7 @@ package com.example.findyourway
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
@@ -13,6 +14,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -47,13 +50,17 @@ fun FindYourWay() {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "App - Find Your Way", color=MaterialTheme.colors.onPrimary) },
+                    title = { Text(text = "Find Your Way", color=MaterialTheme.colors.onPrimary) },
                     navigationIcon = if (navController.previousBackStackEntry != null) {
                         {
-                            IconButton(onClick = { navController.navigateUp() }) {
+                            IconButton(onClick = { navController.navigateUp() },
+                            modifier = Modifier
+                                .semantics(mergeDescendants = true){}
+                                .clickable(onClickLabel= stringResource(id = R.string.Click_to_go_back),onClick={})
+                            ) {
                                 Icon(
                                     painter= painterResource(id = R.drawable.back),
-                                    contentDescription = "Back",
+                                    contentDescription = null,
                                 )
                             }
                         }

@@ -2,6 +2,7 @@ package com.example.findyourway.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.findyourway.R
@@ -52,6 +54,7 @@ fun MapScreenTextView() {
                 .background(MaterialTheme.colors.surface)
                 .padding(4.dp)
                 .wrapContentHeight()
+                .semantics(mergeDescendants = true){}
         ) {
 
             Surface(
@@ -64,7 +67,8 @@ fun MapScreenTextView() {
 
                 Column(
                     verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.semantics(mergeDescendants = true){}
                 ) {
                     Text(text = "1 km")
                 }
@@ -105,7 +109,11 @@ fun RouteScreenButton(navController: NavController) {
         modifier = Modifier
             .padding(20.dp)
             .width(300.dp)
-            .height(80.dp),
+            .height(80.dp)
+            .clickable(
+                onClick = {},
+                onClickLabel = stringResource(id = R.string.Click_to_direction)
+            )
     )
     {
         Text(
@@ -114,7 +122,7 @@ fun RouteScreenButton(navController: NavController) {
             )
         Image(
             painter = painterResource(id = R.drawable.route),
-            contentDescription = stringResource(id = R.string.Route_icon),
+            contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp)

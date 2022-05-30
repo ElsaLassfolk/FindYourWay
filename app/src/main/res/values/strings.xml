@@ -16,5 +16,11 @@
     <string name="live_view">Live View</string>
     <string name="Route_icon">Route Icon</string>
     <string name="Arrow_icon">Arrow Icon</string>
+    <string name="Click_to_LiveView">live view</string>
+    <string name="Click_to_direction">Direction</string>
+    <string name="Click_to_map">map</string>
+    <string name="Click_to_help">help</string>
+    <string name="Click_to_exit">exit</string>
+    <string name="Click_to_go_back">previous page</string>
 
 </resources>

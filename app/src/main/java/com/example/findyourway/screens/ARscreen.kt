@@ -1,6 +1,7 @@
 package com.example.findyourway.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,6 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -48,11 +51,17 @@ fun ARscreenImage(){
 @Composable
 fun ARscreenButton(navController: NavController){
 
-    Button(onClick = { navController.navigate(Screen.Main.route)},
+    Button(
+        onClick = { navController.navigate(Screen.Main.route) },
         modifier = Modifier
             .padding(10.dp)
             .width(300.dp)
-            .height(80.dp))
+            .height(80.dp)
+            .clickable(
+                onClick = {},
+                onClickLabel = stringResource(id = R.string.Add_to_favorite)
+            )
+    )
     {
         Text(
             text = stringResource(id = R.string.Add_to_favorite)
@@ -62,7 +71,7 @@ fun ARscreenButton(navController: NavController){
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp),
-            contentDescription = stringResource(id = R.string.favorite_icon)
+            contentDescription = null
         )
     }
 

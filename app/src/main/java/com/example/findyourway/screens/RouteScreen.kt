@@ -1,6 +1,7 @@
 package com.example.findyourway.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -10,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -40,14 +42,16 @@ fun DirectionTextView() {
     Surface(modifier = Modifier
         .fillMaxWidth()
         .height(120.dp)
-        .padding(start = 8.dp, end = 8.dp)){
+        .padding(start = 8.dp, end = 8.dp)
+       ){
         Row(
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = CenterVertically
+            verticalAlignment = CenterVertically,
+            modifier = Modifier.semantics(mergeDescendants = true){}
         ) {
             Image(
                 painter = painterResource(id = R.drawable.arrow),
-                contentDescription = stringResource(id = R.string.Arrow_icon),
+                contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(40.dp)
@@ -78,7 +82,11 @@ fun RouteButton(navController: NavController) {
         modifier = Modifier
             .padding(20.dp)
             .width(300.dp)
-            .height(80.dp),
+            .height(80.dp)
+            .clickable(
+                onClick = {},
+                onClickLabel = stringResource(id = R.string.Click_to_LiveView)
+            )
     )
     {
         Text(
@@ -88,7 +96,7 @@ fun RouteButton(navController: NavController) {
         )
         Image(
             painter = painterResource(id = R.drawable.liveview),
-            contentDescription = stringResource(id = R.string.live_view),
+            contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
                 .padding(4.dp)
