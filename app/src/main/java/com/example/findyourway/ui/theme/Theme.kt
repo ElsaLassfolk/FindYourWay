@@ -1,10 +1,13 @@
 package com.example.findyourway.ui.theme
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material.*
+import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 /**
  * Customized Material Theme for color
@@ -12,10 +15,10 @@ import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
     primary = Indigo,
-    secondary=Color.Black,
-    onPrimary = Color.White,
-    onBackground =Color.Black,
-    onSecondary = Color.Black,
+    secondary=Color.White,
+    onPrimary = Color.Blue,
+    onBackground =Color.White,
+    onSecondary = Color.DarkGray,
     onSurface =Color.White,
     secondaryVariant = Color.Black
 
@@ -23,7 +26,7 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
     primary = Indigo,
-    secondary=Color.Black,
+    secondary=Color.White,
     onPrimary = Color.White,
     onBackground =Color.Black,
     onSecondary = Color.Black,
@@ -52,3 +55,4 @@ fun FindYourWayTheme(
         content = content
     )
 }
+

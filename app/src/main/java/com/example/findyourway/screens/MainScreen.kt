@@ -52,13 +52,13 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun CompanyLogo() {
     Column(
-        modifier = Modifier.padding(10.dp),
+        //modifier = Modifier.padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
             painter = painterResource(id = R.drawable.logo_size),
-            contentDescription = "null",
+            contentDescription = stringResource(id = R.string.CompanyLogo),
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(200.dp)
         )
@@ -70,7 +70,7 @@ fun CompanyLogo() {
 fun Tips(){
     Column(modifier = Modifier
         .wrapContentSize()
-        .padding(start = 60.dp, bottom = 20.dp, end = 40.dp),
+        .padding(start = 30.dp, bottom = 20.dp, end = 30.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ){
@@ -87,13 +87,15 @@ fun TalkButton(navController: NavController) {
     Button(onClick = {
         navController.navigate(Screen.Map.route) },
         modifier = Modifier
-            .width(300.dp)
-            .height(80.dp)
+            .padding(10.dp)
+            .width(350.dp)
+            .height(100.dp)
             .clickable(
                 onClick = {},
                 onClickLabel = stringResource(id = R.string.Press_and_talk)
             )
-
+            .semantics(mergeDescendants = true){},
+            shape= MaterialTheme.shapes.medium
     ){
         Text(text = stringResource(id = R.string.Press_and_talk),
             style=MaterialTheme.typography.button)

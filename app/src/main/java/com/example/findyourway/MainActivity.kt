@@ -9,7 +9,11 @@ import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.ripple.LocalRippleTheme
+import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,56 +45,79 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun FindYourWay() {
     FindYourWayTheme() {
-
-        val navController = rememberNavController()
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentDestination = navBackStackEntry?.destination
+        CompositionLocalProvider(LocalRippleTheme provides SecondaryRippleTheme) {
 
 
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "Find Your Way", color=MaterialTheme.colors.onPrimary) },
-                    navigationIcon = if (navController.previousBackStackEntry != null) {
-                        {
-                            IconButton(onClick = { navController.navigateUp() },
-                            modifier = Modifier
-                                .semantics(mergeDescendants = true){}
-                                .clickable(onClickLabel= stringResource(id = R.string.Click_to_go_back),onClick={})
-                            ) {
-                                Icon(
-                                    painter= painterResource(id = R.drawable.back),
-                                    contentDescription = null,
-                                )
+            val navController = rememberNavController()
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentDestination = navBackStackEntry?.destination
+
+
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(
+                                stringResource(id = R.string.find_your_way),
+                                color = MaterialTheme.colors.onPrimary
+                            )
+                        },
+                        navigationIcon = if (navController.previousBackStackEntry != null) {
+                            {
+                                IconButton(onClick = { navController.navigateUp() },
+                                    modifier = Modifier
+                                        .semantics(mergeDescendants = true) {}
+                                        .clickable(
+                                            onClickLabel = stringResource(id = R.string.Click_to_go_back),
+                                            onClick = {})
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.back),
+                                        contentDescription = null,
+                                    )
+                                }
+                            }
+                        } else {
+                            null
+                        }
+                    )
+                },
+                bottomBar = {
+                    BottomBar(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        currentDestination = currentDestination,
+                        onNavigationSelected = { screen ->
+                            navController.navigate(screen.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
                             }
                         }
-                    } else {
-                        null
-                    }
-                )
-            },
-            bottomBar = {
-                BottomBar(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    currentDestination = currentDestination,
-                    onNavigationSelected = { screen ->
-                        navController.navigate(screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    }
-                )
-            },
-        )
-        {
-                paddingValues ->
-            NavigationGraph(Modifier.padding(paddingValues), navController)
+                    )
+                },
+            )
+            { paddingValues ->
+                NavigationGraph(Modifier.padding(paddingValues), navController)
+            }
         }
     }
 }
 
 
+@Immutable
+private object SecondaryRippleTheme : RippleTheme {
+    @Composable
+    override fun defaultColor() = RippleTheme.defaultRippleColor(
+        contentColor = MaterialTheme.colors.secondary,
+        lightTheme = MaterialTheme.colors.isLight
+    )
+
+    @Composable
+    override fun rippleAlpha() = RippleTheme.defaultRippleAlpha(
+        contentColor = MaterialTheme.colors.secondary,
+        lightTheme = MaterialTheme.colors.isLight
+    )
+}

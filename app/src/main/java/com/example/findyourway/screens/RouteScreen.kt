@@ -79,10 +79,11 @@ fun RouteMap() {
 fun RouteButton(navController: NavController) {
     Button(
         onClick = { navController.navigate(Screen.AR.route) },
+        shape= MaterialTheme.shapes.medium,
         modifier = Modifier
-            .padding(20.dp)
-            .width(300.dp)
-            .height(80.dp)
+            .padding(10.dp)
+            .width(400.dp)
+            .height(100.dp)
             .clickable(
                 onClick = {},
                 onClickLabel = stringResource(id = R.string.Click_to_LiveView)
@@ -91,7 +92,6 @@ fun RouteButton(navController: NavController) {
     {
         Text(
             text = stringResource(id = R.string.See_Live_View),
-            fontSize = 25.sp,
             style = MaterialTheme.typography.button
         )
         Image(

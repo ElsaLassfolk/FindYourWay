@@ -27,8 +27,8 @@ fun SearchBar(
 ){
 
     TopAppBar(modifier=Modifier
-        .clickable(onClickLabel= stringResource(id = R.string.Enter_address),onClick={})
-        .semantics(mergeDescendants = true) {},
+        .semantics(mergeDescendants = true) {}
+        .clickable(onClickLabel= stringResource(id = R.string.Enter_address),onClick={}),
         title = {
         Text(text = title,
             color=MaterialTheme.colors.onSecondary,
@@ -44,17 +44,6 @@ fun SearchBar(
                 }
             } else Box {}
         },
-        navigationIcon = {
-            if (icon != null) {
-                Icon(imageVector = icon,
-                    contentDescription = null,
-                    modifier = Modifier.clickable{
-                        onButtonClicked.invoke()
-                    })
-            }
-        },
-
-
         backgroundColor= Color.Transparent,
         elevation = elevation)
 

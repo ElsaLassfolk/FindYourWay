@@ -28,7 +28,7 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 fun ARscreen(navController: NavController) {
     Surface(Modifier.fillMaxWidth()) {
         Column(
-            verticalArrangement = Arrangement.Bottom,
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ARscreenImage()
@@ -43,7 +43,9 @@ fun ARscreenImage(){
     Image(painter = painterResource(id = R.drawable.ar),
         contentDescription = stringResource(id = R.string.live_view),
         modifier = Modifier
-            .width(550.dp))
+            .height(520.dp)
+            .fillMaxWidth())
+
 }
 
 
@@ -55,16 +57,20 @@ fun ARscreenButton(navController: NavController){
         onClick = { navController.navigate(Screen.Main.route) },
         modifier = Modifier
             .padding(10.dp)
-            .width(300.dp)
-            .height(80.dp)
+            .width(400.dp)
+            .height(100.dp)
             .clickable(
                 onClick = {},
                 onClickLabel = stringResource(id = R.string.Add_to_favorite)
-            )
+            ),
+        shape= MaterialTheme.shapes.medium
+        
+
     )
     {
         Text(
-            text = stringResource(id = R.string.Add_to_favorite)
+            text = stringResource(id = R.string.Add_to_favorite),
+            fontSize = 26.sp
         )
         Icon(
             imageVector = Icons.Default.Favorite,

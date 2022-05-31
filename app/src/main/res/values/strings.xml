@@ -22,5 +22,7 @@
     <string name="Click_to_help">help</string>
     <string name="Click_to_exit">exit</string>
     <string name="Click_to_go_back">previous page</string>
+    <string name="CompanyLogo">company logo</string>
+    <string name="find_your_way">find your way</string>
 
 </resources>

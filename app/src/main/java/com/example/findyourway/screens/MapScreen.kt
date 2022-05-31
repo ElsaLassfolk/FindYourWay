@@ -67,8 +67,7 @@ fun MapScreenTextView() {
 
                 Column(
                     verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.semantics(mergeDescendants = true){}
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(text = "1 km")
                 }
@@ -96,6 +95,7 @@ fun Map() {
         contentDescription = stringResource(id = R.string.Route_icon),
         modifier = Modifier
             .fillMaxWidth()
+            .height(400.dp)
     )
 
 
@@ -106,10 +106,11 @@ fun Map() {
 fun RouteScreenButton(navController: NavController) {
     Button(
         onClick = { navController.navigate(Screen.Route.route) },
+        shape= MaterialTheme.shapes.medium,
         modifier = Modifier
-            .padding(20.dp)
-            .width(300.dp)
-            .height(80.dp)
+            .padding(10.dp)
+            .width(400.dp)
+            .height(100.dp)
             .clickable(
                 onClick = {},
                 onClickLabel = stringResource(id = R.string.Click_to_direction)
