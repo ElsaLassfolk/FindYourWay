@@ -26,7 +26,7 @@ import com.example.findyourway.ui.theme.FindYourWayTheme
 
 @Composable
 fun ARscreen(navController: NavController) {
-    Surface(Modifier.fillMaxWidth()) {
+    Surface(Modifier.fillMaxSize()) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

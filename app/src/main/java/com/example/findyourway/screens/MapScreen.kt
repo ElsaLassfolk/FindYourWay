@@ -24,7 +24,7 @@ import com.example.findyourway.navigation.Screen
 
 @Composable
 fun MapScreen(navController: NavController) {
-    Surface(Modifier.fillMaxHeight(1f)) {
+    Surface(Modifier.fillMaxSize(1f)) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
