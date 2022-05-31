@@ -43,7 +43,7 @@ fun ARscreenImage(){
     Image(painter = painterResource(id = R.drawable.ar),
         contentDescription = stringResource(id = R.string.live_view),
         modifier = Modifier
-            .height(520.dp)
+            .height(570.dp)
             .fillMaxWidth())
 
 }

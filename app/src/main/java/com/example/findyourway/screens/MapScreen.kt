@@ -95,7 +95,7 @@ fun Map() {
         contentDescription = stringResource(id = R.string.Route_icon),
         modifier = Modifier
             .fillMaxWidth()
-            .height(400.dp)
+            .height(440.dp)
     )
 
 
